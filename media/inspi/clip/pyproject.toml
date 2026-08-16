@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nlp-absa"
+version = "0.2.0"
+description = "Aspect-Based Sentiment Analysis CLI: keyword matching + multilingual sentiment (nlptown) + zero-shot NLI fallback."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["nlp", "absa", "aspect", "sentiment", "reviews", "cli"]
+dependencies = [
+    "nlp-core>=0.1",
+    "transformers>=4.45",
+    "torch>=2.1",
+    "pydantic>=2.5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+nlp-absa = "nlp_absa.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
